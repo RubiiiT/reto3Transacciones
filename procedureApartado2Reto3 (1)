@@ -1,0 +1,16 @@
+delimiter //
+
+DROP PROCEDURE IF EXISTS transferencia;//
+
+Create procedure TRANSFERENCIA (
+IN origen int,
+IN destino int,
+IN cantidad float)
+begin 
+Update cuentas set saldo=saldo-cantidad where id = origen;
+Update cuentas set saldo=saldo+cantidad where id = destino;
+Commit; 
+END //
+
+delimiter ;
+
